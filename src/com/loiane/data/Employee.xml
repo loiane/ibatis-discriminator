@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Employee">
+	
+	<resultMap id="resultEmployee" type="Employee">
+	    <result property="id"/>
+	    <result property="name"/>
+	    <discriminator javaType="int" column="employee_type">
+			<case value="1" resultType="Manager"> 
+				<result property="managerId" column="manager_id" />
+				<result property="info" column="info" />
+			</case> 
+			<case value="2" resultType="Developer">
+				<result property="developerId" column="developer_id" />
+				<result property="project" column="product" /> 
+			</case>
+		</discriminator>
+    </resultMap>
+	
+    <select id="getAllEmployees" resultMap="resultEmployee">
+    	SELECT 
+		    id, name, employee_type,
+		    manager_id, info,
+		    developer_id, product
+		FROM employee E
+		    left join manager M on M.employee_id = E.id
+		    left join developer D on D.employee_id = E.id 
+    </select>
+    
+</mapper>
