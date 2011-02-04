@@ -8,6 +8,8 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import com.loiane.data.EmployeeMapper;
+
 /**
  * MyBatis Connection Factory, which reads the configuration data from a XML file.
  * 
@@ -28,6 +30,8 @@ public class MyBatisConnectionFactory {
 
 			if (sqlSessionFactory == null) {
 				sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
+				
+				sqlSessionFactory.getConfiguration().addMapper(EmployeeMapper.class);
 			}
 		}
 

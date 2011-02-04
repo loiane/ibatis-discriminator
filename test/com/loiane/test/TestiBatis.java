@@ -48,5 +48,21 @@ public class TestiBatis {
 		assertNotNull(list);
 		assertEquals(5, list.size());
 	}
+	
+	/**
+	 * Test method for {@link com.loiane.dao.EmployeeDAO#selectAllUsingAnnotations()}.
+	 */
+	@Test
+	public void testSelectAllUsingAnnotations() {
+		
+		List<Employee> list = employeeDAO.selectAllUsingAnnotations();
+		
+		for (Employee employee : list){
+			System.out.println(employee.toString());
+		}
+		
+		assertNotNull(list);
+		assertEquals(5, list.size());
+	}
 
 }
