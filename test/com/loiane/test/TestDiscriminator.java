@@ -19,7 +19,7 @@ import com.loiane.model.Employee;
  * http://loianegroner.com (English)
  * http://loiane.com (Portuguese)
  */
-public class TestiBatis {
+public class TestDiscriminator {
 	
 	private static EmployeeDAO employeeDAO;
 
